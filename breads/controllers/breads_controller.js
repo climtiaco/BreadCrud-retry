@@ -7,10 +7,12 @@ const bread_data = require('../models/bread_data');
 
 //INDEX
 breads_router.get('/', (req, res) => {
+    // this 'index' we're referring to is the index.jsx file
     res.render('index', 
     // so this "breads:" is just an object that we're using as the second optional argument for res.render to work.
         {
-            breads: bread_data
+            breads: bread_data,
+            title: 'Index Page'
         })
     // res.send(bread_data)
 })

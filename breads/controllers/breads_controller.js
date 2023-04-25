@@ -1,20 +1,22 @@
 const express = require('express');
-const breads = express.Router();
-const Bread = require('../models/bread');
+//Previously
+// const breads = express.Router();
+const breads_router = express.Router();
+//const Bread = require('../models/bread');
+const bread_data = require('../models/bread_data');
 
 //INDEX
-breads.get('/', (req, res) => {
+breads_router.get('/', (req, res) => {
     res.render('index', 
+    // so this "breads:" is just an object that we're using as the second optional argument for res.render to work.
         {
-            breads: Bread,
-            title: 'Index Page'
-        });
-   // res.send(Bread)
+            breads: bread_data
+        })
+    // res.send(bread_data)
 })
 
-//SHOW
-breads.get('/:arrayIndex', (req, res) => {
-    res.send(Bread[req.params.arrayIndex])
+//Show
+breads_router.get('/:arrayIndex', (req, res) => {
+    res.send(bread_data[req.params.arrayIndex])
 })
-
-module.exports = breads
+module.exports = breads_router
